@@ -1,0 +1,94 @@
+[
+    {
+            "id": 1,
+            "name": "Rin PRW",
+            "model": "P145",
+            "description" : "Rin 14X6 4-100/114.3 PRW Mod: P145 ET35 CB65.1 SILVER MACHINE FACE",
+            "price": 1800,
+            "size": "14X6 4-100/114.3",
+            "img": "1.png",
+            "category" : "rines",
+            "stock" : 20
+    },
+    {
+            "id": 2,
+            "name": "Rin PRW",
+            "model": "P140",
+            "description": "Rin 15X7 4-100/108 PRW Mod: P140 ET38 CB73.1 HYPER BLACK",
+            "price": 2250,
+            "size": "15X7 4-100/108",
+            "img": "2.png",
+            "category" : "rines",
+            "stock" : 16
+    },
+    {
+            "id": 3,
+            "name": "Rin MOTOR SPORT",
+            "model": "L-2031",
+            "description": "Rin 13X5.5 4-100 MOTOR SPORT MOD L-2031 ET30 GRIS",
+            "price": 1340,
+            "size": "13X5.5 4-100",
+            "img": "3.png",
+            "category" : "rines",
+            "stock" : 8
+    },
+    {
+            "id": 4,
+            "name": "Rin PRW",
+            "model": "P585",
+            "description": "Rin 17X7.5 5-100 PRW Mod: P585 ET35 CB73.1 MATTE GUN METAL",
+            "price": 2750,
+            "size": "17X7.5 5-100",
+            "img": "4.png",
+            "category" : "rines",
+            "stock" : 4
+    }
+    ,
+    {
+            "id": 5,
+            "name": "Rin GIANELLE",
+            "model": "ET50",
+            "description": "Rin 22X9 5-130 GIANELLE Mod: MASSA-7 ET50 CB71.6 MS",
+            "price": 5130,
+            "size": "22X9 5-130",
+            "img": "5.png",
+            "category" : "rines",
+            "stock" : 4   
+    },
+    {
+            "id": 6,
+            "name": "LLanta Michelin",
+            "model": "91V",
+            "description": "La llanta Continental 205/55 R16 MICHELIN 91V se caracteriza por Manifestar un frenado de primera, ya que continua frenando en caminos mojados a una distancia menor que la competencia.",
+            "price": 2250,
+            "size": "205/55 R16",
+            "img": "6.png",
+            "category" : "llantas",
+            "stock" : 13
+    }
+    ,
+    {
+            "id": 7,
+            "name": "LLanta YOKOHAMA",
+            "model": "G91A",
+            "description": "La llanta YOKOHAMA G91A se caracteriza por  Manifestar un frenado de primera, ya que continua frenando en caminos mojados a una distancia menor que la competencia.",
+            "price": 2000,
+            "size": "225/65 R17",
+            "img": "7.png",
+            "category" : "llantas",
+            "stock" : 2
+    }
+    ,
+    {
+            "id": 8,
+            "name": "LLanta Sumitomo",
+            "model": "HTR",
+            "description": "La llanta Sumitomo HTR se caracteriza por  Manifestar un frenado de primera, ya que continua frenando en caminos mojados a una distancia menor que la competencia.",
+            "price": 2900,
+            "size": "225/45 R17",
+            "img": "8.png",
+            "category" : "llantas",
+            "stock" : 3
+    }
+]
+
