@@ -9,11 +9,13 @@ import Items from '../ItemListContainer/data.json';
 import { useParams ,useNavigate} from 'react-router-dom';
 import { useState , useEffect } from 'react'; 
 
-import ItemCount from '../ItemCount/ItemCount';
+import ItemCount from './ItemCount/ItemCount';
 
 
         const ItemDetailContainer = () =>
         {
+
+            const [cantidad, setCantidad] = useState(0);    
 
             const idItem = useParams();
 
@@ -25,6 +27,7 @@ import ItemCount from '../ItemCount/ItemCount';
             {
                 navigate(-1)
             }
+         
 
             const pedirData = () =>
             {
@@ -49,6 +52,12 @@ import ItemCount from '../ItemCount/ItemCount';
                                         console.log(err);
                         });
             },[idItem.id]);
+
+            const handleAgregar = () =>
+            {
+                console.log({...item[0],cantidad})
+                
+            }
 
                         
             return(
@@ -76,7 +85,7 @@ import ItemCount from '../ItemCount/ItemCount';
                                                                                 
                                                                         <div className='carrito '>
 
-                                                                                <ItemCount stock={data.stock}/>
+                                                                                <ItemCount setCantidad={setCantidad} max={data.stock} cantidad={cantidad} handleAgregar={handleAgregar} />
                                                                                 
                                                                         </div>    
 

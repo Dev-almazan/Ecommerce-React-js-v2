@@ -3,12 +3,8 @@ import { BsFillBagPlusFill } from "react-icons/bs";
 
 import { useState } from "react";
 
-    const ItemCount = (valor) =>
+    const ItemCount = ({cantidad,setCantidad,max,handleAgregar}) =>
     {
-
-      const max = valor.stock;
-
-        const [cantidad, setCantidad] = useState(0);
 
         
         const handleResta =() =>
@@ -23,6 +19,8 @@ import { useState } from "react";
           
         }
 
+
+
         return(
 
             <div className="contador">
@@ -33,7 +31,7 @@ import { useState } from "react";
 
                 </div>
                 <div className="cont">
-                         <button className="btn btn-primary mx-1 mt-1" ><span className="mx-3 numc"><BsFillBagPlusFill /> Agregar al carrito </span></button>
+                         <button className="btn btn-primary mx-1 mt-1" onClick={handleAgregar}><span className="mx-3 numc"><BsFillBagPlusFill /> Agregar al carrito </span></button>
                 </div>
                    
             </div>

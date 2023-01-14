@@ -14,6 +14,9 @@
 
   import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
+  import FormLogin from './components/User/Login/Form';
+
+
   import Error404 from './components/Error404/error404';
 
 
@@ -33,6 +36,7 @@ function App() {
                             
                             <Route  path='/category/:categoryid' element={<ItemListContainer greeting="Más vendidos en Rines de Autos y Camionetas" />} />
                             <Route  path='/item/:id' element={<ItemDetailContainer  />} />
+                            <Route  path='/user/login' element={<FormLogin/>} />
                             <Route  path='/'  element={<ItemListContainer greeting="Más vendidos en Rines de Autos y Camionetas" />} />
                             <Route  path='*' element={ <Error404/>} />
                         

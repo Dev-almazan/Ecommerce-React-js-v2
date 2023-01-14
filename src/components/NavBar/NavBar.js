@@ -7,7 +7,6 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import logo from '../../img/logotipo.png'; 
 import CartWidget from './cartWidget.js';
 import './navbar.css';
-
 import {Link} from 'react-router-dom'; 
 
 
@@ -20,7 +19,7 @@ const NavBar =()=> {
   return (
     <>
       {['sm'].map((expand) => (
-        <Navbar className="mb-3 navegacion shadow">
+        <Navbar key={expand} className="mb-3 fixed-top shadow bg-light">
           <Container>
             <Link to="/" className='barra-der'><img className='logo-nav' src={logo}></img></Link>
                   <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -41,9 +40,11 @@ const NavBar =()=> {
                                             <CartWidget children={num} />
 
                                               <NavDropdown title="Mi cuenta" id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                                                          <NavDropdown.Item href="#action4">Mis pedidos</NavDropdown.Item>
-                                                  <NavDropdown.Divider />
-                                                          <NavDropdown.Item href="#action5">Iniciar Sesión</NavDropdown.Item>
+                                                         <Link  to="/user/pedidos" className='btn '>Mis pedidos</Link>
+                                                         <NavDropdown.Divider />
+                                                         <Link  to="/user/login" className='btn '>Iniciar Sesión</Link>
+                                                 
+                                                   
                                               </NavDropdown>
  
                                 </Nav>
