@@ -6,16 +6,23 @@ import { BsArrow90DegLeft } from "react-icons/bs";
 import './ItemDetailContainer.css';
 
 import Items from '../ItemListContainer/data.json';
-import { useParams ,useNavigate} from 'react-router-dom';
-import { useState , useEffect } from 'react'; 
+import { useParams ,useNavigate ,Link} from 'react-router-dom';
+import { useState , useEffect ,useContext } from 'react'; 
 
 import ItemCount from './ItemCount/ItemCount';
-
+import { CartContext } from "../../context/cartContext";
 
         const ItemDetailContainer = () =>
         {
 
-            const [cantidad, setCantidad] = useState(0);    
+          
+             
+            //valores globales de context para el cart section            
+            const { cart,addCarrito,isInCart } = useContext(CartContext);
+
+
+            const [cantidad, setCantidad] = useState(1);   
+            
 
             const idItem = useParams();
 
@@ -55,11 +62,15 @@ import ItemCount from './ItemCount/ItemCount';
 
             const handleAgregar = () =>
             {
-                console.log({...item[0],cantidad})
-                
-            }
 
-                        
+                
+                const itemsCart = {...item[0],cantidad};
+
+                 addCarrito(itemsCart);
+
+
+            }
+    
             return(
                 <div className='content' >
                        
@@ -83,10 +94,17 @@ import ItemCount from './ItemCount/ItemCount';
                                                                         <h1 className='text-center'>{data.name} {data.model}  </h1>
                                                                   
                                                                                 
-                                                                        <div className='carrito '>
-
+                                                                        <div className='carrito'>
+                                                                        
+                                                                               {
+                                                                                 !isInCart(data.id)?                       
                                                                                 <ItemCount setCantidad={setCantidad} max={data.stock} cantidad={cantidad} handleAgregar={handleAgregar} />
-                                                                                
+                                                                                :
+                                                                                <Link  to="/cart" className='btn btn-primary'>Terminar compra</Link>
+                                                                               }
+                                                                               
+                                                                                       
+                                                                                                                                
                                                                         </div>    
 
                                                                                 <div className='text-left'>

@@ -6,7 +6,8 @@ import { useState } from "react";
     const ItemCount = ({cantidad,setCantidad,max,handleAgregar}) =>
     {
 
-        
+    
+
         const handleResta =() =>
         {
             cantidad > 1 && setCantidad(cantidad - 1);
