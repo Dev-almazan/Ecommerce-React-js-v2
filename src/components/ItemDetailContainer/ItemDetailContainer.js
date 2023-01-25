@@ -1,6 +1,6 @@
 
 import Form from 'react-bootstrap/Form';
-import { BsArrow90DegLeft } from "react-icons/bs";
+import { BsArrow90DegLeft ,BsFillCartCheckFill} from "react-icons/bs";
 
 
 import './ItemDetailContainer.css';
@@ -100,7 +100,7 @@ import { CartContext } from "../../context/cartContext";
                                                                                  !isInCart(data.id)?                       
                                                                                 <ItemCount setCantidad={setCantidad} max={data.stock} cantidad={cantidad} handleAgregar={handleAgregar} />
                                                                                 :
-                                                                                <Link  to="/cart" className='btn btn-primary'>Terminar compra</Link>
+                                                                                <Link  to="/cart" className='btn btn-primary mx-1 mt-1'><span className="mx-3 numc"><BsFillCartCheckFill /> Terminar compra</span></Link>
                                                                                }
                                                                                
                                                                                        

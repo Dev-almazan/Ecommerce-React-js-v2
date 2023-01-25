@@ -1,6 +1,8 @@
 
 import './cart.css';
 import Form from 'react-bootstrap/Form';
+import { BsFillCartXFill } from "react-icons/bs";
+
 
 
 
@@ -14,7 +16,7 @@ const Cart = ()=>
 {
 
         //valores globales de context para el cart section            
-        const { cart,addCarrito,isInCart,emptyCart,totalCart,totalCant } = useContext(CartContext); 
+        const { cart,addCarrito,isInCart,emptyCart,totalCart,totalCant,emptyItem } = useContext(CartContext); 
 
     return(
         <div className='content' >
@@ -42,9 +44,10 @@ const Cart = ()=>
                                                                 
                                                         </div>     
                                                         <div className='col-md-2'>
-                                                        <Form.Select size="lg">
-                                                            <option>{data.cantidad}</option>
+                                                        <Form.Select size="md">
+                                                            <option selected>{data.cantidad}</option>
                                                         </Form.Select>
+                                                        <button className='btn text-primary btn-outline-primary mt-2' onClick={()=> {emptyItem(data.id)}}><h5><BsFillCartXFill /></h5></button>
                                                         </div> 
                             
                                             </div>
@@ -57,10 +60,11 @@ const Cart = ()=>
                         <div className='col-md-3 card'>
                             <h5 className='mt-3 text-center'>RESUMEN DE TU PEDIDO</h5><hr></hr>
 
-                            <h4 >Total<br></br>{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(totalCart())}</h4>
-                            <h4 >Cantidad <br></br> {totalCant()}</h4>
+                            <h4 className='text-center'>Total<br></br><h4>{new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(totalCart())}</h4></h4><hr></hr>
+                            <h4 className='text-center'>Cantidad<br></br><h4>{totalCant()}</h4></h4><hr></hr>
+
                            <button className='btn btn-primary mt-2'>Terminar Compra</button>
-                            <button className='btn btn-outline-primary mt-2' onClick={emptyCart}>Vaciar Carrito</button>
+                            <button className='btn btn-outline-primary mt-2' onClick={emptyCart}>  Vaciar Carrito</button><br></br>
 
 
                         </div>

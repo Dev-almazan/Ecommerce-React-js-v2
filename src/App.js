@@ -27,9 +27,12 @@
 function App() {
 
 
-            const [cart, setCart] = useState([]);
+          
             
 
+            const [cart, setCart] = useState([]);
+               
+           
             const addCarrito = (valores) =>
             {
                   
@@ -47,6 +50,12 @@ function App() {
                   setCart([]);
             }
 
+            const emptyItem =(id)=>
+            {
+                  setCart(cart.filter(item => item.id !== id ))
+            }
+
+
             const totalCart =()=>
             {
                return cart.reduce((accu,item)=> accu + item.price * item.cantidad,0 ) 
@@ -63,7 +72,7 @@ function App() {
 
             <div className='inicio' >
 
-                  <CartContext.Provider value={ {cart,addCarrito,isInCart,emptyCart,totalCart,totalCant} }>
+                  <CartContext.Provider value={ {cart,addCarrito,isInCart,emptyCart,totalCart,totalCant,emptyItem} }>
 
                                     <BrowserRouter>
 

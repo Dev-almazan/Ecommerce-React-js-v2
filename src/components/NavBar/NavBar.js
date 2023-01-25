@@ -1,4 +1,4 @@
-
+import { useContext } from 'react'; 
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,13 +8,18 @@ import logo from '../../img/logotipo.png';
 import CartWidget from './cartWidget.js';
 import './navbar.css';
 import {Link} from 'react-router-dom'; 
+import { CartContext } from "../../context/cartContext";
+
+
 
 
 
 
 const NavBar =()=> {
 
-  let num = 4;
+    //valores globales de context para el cart section            
+    const { totalCant } = useContext(CartContext);
+
 
   return (
     <>
@@ -37,7 +42,7 @@ const NavBar =()=> {
                     
                                 <Nav className="justify-content-end flex-grow-1 pe-3 barra-iz">
 
-                                            <CartWidget children={num} />
+                                            <CartWidget children={totalCant()} />
 
                                               <NavDropdown title="Mi cuenta" id={`offcanvasNavbarDropdown-expand-${expand}`}>
                                                          <Link  to="/user/pedidos" className='btn '>Mis pedidos</Link>
