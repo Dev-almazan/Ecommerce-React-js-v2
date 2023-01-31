@@ -21,59 +21,18 @@
 
   import Error404 from './components/Error404/error404';
 
-  import { CartContext } from "./context/cartContext";
+  import { CartProvider } from "./context/cartContext";
 
 
 function App() {
 
 
-          
-            
-
-            const [cart, setCart] = useState([]);
-               
-           
-            const addCarrito = (valores) =>
-            {
-                  
-                  setCart([...cart,valores]);
-            }
-
-
-            const isInCart = (id) =>
-            {
-                  return cart.some(item =>  item.id === id )
-            }
-
-            const emptyCart =()=>
-            {
-                  setCart([]);
-            }
-
-            const emptyItem =(id)=>
-            {
-                  setCart(cart.filter(item => item.id !== id ))
-            }
-
-
-            const totalCart =()=>
-            {
-               return cart.reduce((accu,item)=> accu + item.price * item.cantidad,0 ) 
-            }
-            
-            const totalCant =()=>
-            {
-               return cart.reduce((accu,item)=> accu +  item.cantidad,0 ) 
-            }
-
-            console.log(cart)
-
             return (
 
             <div className='inicio' >
 
-                  <CartContext.Provider value={ {cart,addCarrito,isInCart,emptyCart,totalCart,totalCant,emptyItem} }>
-
+                 
+                              <CartProvider>
                                     <BrowserRouter>
 
                                           <NavBar />
@@ -83,7 +42,7 @@ function App() {
                                                 
                                                 <Route  path='/category/:categoryid' element={<ItemListContainer greeting="Más vendidos en Rines de Autos y Camionetas" />} />
                                                 <Route  path='/item/:id' element={<ItemDetailContainer  />} />
-                                                <Route  path='/cart' element={<Cart />} />
+                                                <Route  path='/cart' element={<Cart/>} />
                                                 <Route  path='/user/login' element={<FormLogin/>} />
                                                 <Route  path='/'  element={<ItemListContainer greeting="Más vendidos en Rines de Autos y Camionetas" />} />
                                                 <Route  path='*' element={ <Error404/>} />
@@ -91,9 +50,10 @@ function App() {
                                           </Routes>
                                     
 
-                                    </BrowserRouter>    
+                                    </BrowserRouter>   
+                              </CartProvider>       
 
-                  </CartContext.Provider>    
+               
 
             </div>           
                             
