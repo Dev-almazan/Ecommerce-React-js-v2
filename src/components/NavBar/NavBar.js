@@ -9,17 +9,14 @@ import CartWidget from './cartWidget.js';
 import './navbar.css';
 import {Link} from 'react-router-dom'; 
 import { CartContext } from "../../context/cartContext";
-
-
-
-
+import { LoginContext } from '../../context/loginContext';
 
 
 const NavBar =()=> {
 
     //valores globales de context para el cart section            
     const { totalCant } = useContext(CartContext);
-
+    const {user,logout}= useContext(LoginContext);
 
   return (
     <>
@@ -43,15 +40,21 @@ const NavBar =()=> {
                                 <Nav className="justify-content-end flex-grow-1 pe-3 barra-iz">
 
                                             <CartWidget children={totalCant()} />
+                                  
+                                                          {
+                                                              user.logged == false ?
+                                                              <Link  to="/user/login" className=' btn'>Iniciar Sesión</Link>
+                                                              :
+                                                              <>
+                                                              <NavDropdown title="Mi cuenta" id={`offcanvasNavbarDropdown-expand-${expand}`}>
+                                                               <button className='btn'>{user.email}</button>    <NavDropdown.Divider /> 
+                                                              <Link  to="/user/pedidos" className='btn '>Mis pedidos</Link>
+                                                              <NavDropdown.Divider /> 
+                                                              <Link  to="/user/login" className='btn' onClick={logout}>Cerrar Sesión</Link> 
+                                                               </NavDropdown>
+                                                               </>
+                                                          }
 
-                                              <NavDropdown title="Mi cuenta" id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                                                         <Link  to="/user/pedidos" className='btn '>Mis pedidos</Link>
-                                                         <NavDropdown.Divider />
-                                                         <Link  to="/user/login" className='btn '>Iniciar Sesión</Link>
-                                                 
-                                                   
-                                              </NavDropdown>
- 
                                 </Nav>
                           </Offcanvas.Body>
               </Navbar.Offcanvas>

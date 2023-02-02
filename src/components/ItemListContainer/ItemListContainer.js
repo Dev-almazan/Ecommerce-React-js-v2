@@ -1,20 +1,17 @@
 
 import './itemlistcontainer.css';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import logo from '../../img/media/rn1.jpg';
-
 import { useState , useEffect} from 'react';    
-
 import Productos from './data.json';
 import { Link, useParams } from 'react-router-dom';
-import ItemList from "./ItemList"
+import ItemList from "./ItemList";
+import Cargando from "../Cargando/Cargando"  ;
 
 
 
 const ItemListContainer = ({greeting}) =>
 {
 
+        const [cargando, setCargando] = useState(false);
 
         const {categoryid} = useParams();
 
@@ -34,37 +31,43 @@ const ItemListContainer = ({greeting}) =>
 
 
         useEffect(() => {
-                        pedirDatos()
-                                .then((result) => {
+                setCargando(false)
+                        pedirDatos().then((result) => {
 
                                         if(categoryid)
                                         {
                                                 setProductos(result.filter(productos  => productos.category == categoryid));
-                                                
                                         }
                                         else
                                         {
                                                 setProductos(result);
-
+                                              
                                         }
 
                                                 
                                 }).catch((err) => {
                                                 console.log(err);
-                                });
+                                }).finally(()=>{
+                                        setTimeout(() => {
+                                                setCargando(true)
+                                            }, 1000);
+                                })
         },[categoryid]);
 
        
              
             return(
-                 <div className="itemlist">
-
-
-                               <h3 className='leyenda'>{leyenda} </h3>         
-                                <ItemList productos={productos} />
-  
-                 </div>   
                 
+                        cargando == false ?
+                        <Cargando />
+                        :
+                        <>
+                        <div className="itemlist">
+                        <h3 className='leyenda'>{leyenda} </h3>         
+                       <ItemList productos={productos} />
+                        </div>  
+                        </>       
+                 
                 );
 }
 
