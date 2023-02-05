@@ -1,11 +1,13 @@
 
 import './itemlistcontainer.css';
 import { useState , useEffect} from 'react';    
-import Productos from './data.json';
 import { Link, useParams } from 'react-router-dom';
 import ItemList from "./ItemList";
 import Cargando from "../Cargando/Cargando"  ;
 
+//Importamos Firebase db
+import {collection, getDocs ,query, where} from "firebase/firestore";
+import { db } from "../../firebase/config";
 
 
 const ItemListContainer = ({greeting}) =>
@@ -19,39 +21,30 @@ const ItemListContainer = ({greeting}) =>
 
         let leyenda = categoryid !== undefined  ? `Relacionado con tus compras en ${categoryid} para Vehículos` : "Los mejores productos para Vehículos";
 
-        const pedirDatos = () =>
-        {
-                        return new Promise( (resuelta,rechazada)=>
-                        {
-                                        resuelta(Productos);            
-                                
-                        })
-        };
-       
-
+        const Productos = categoryid == undefined ? collection(db,"productos") : query(collection(db,"productos"),where("category","==",categoryid));
 
         useEffect(() => {
                 setCargando(false)
-                        pedirDatos().then((result) => {
+                getDocs(Productos).then((result) => {
 
-                                        if(categoryid)
-                                        {
-                                                setProductos(result.filter(productos  => productos.category == categoryid));
-                                        }
-                                        else
-                                        {
-                                                setProductos(result);
-                                              
-                                        }
-
+                                //Mapeamos objet agregamos id y data
+                                const datos =  result.docs.map((datos)=> {
+                                return {
+                                        id : datos.id,
+                                        ...datos.data()
+                                }
+                                });
+                                        
+                                setProductos(datos);
+                                       
                                                 
-                                }).catch((err) => {
-                                                console.log(err);
-                                }).finally(()=>{
-                                        setTimeout(() => {
-                                                setCargando(true)
-                                            }, 1000);
-                                })
+                }).catch((err) => {
+                        console.log(err);
+                }).finally(()=>{
+                        setTimeout(() => {
+                                setCargando(true)
+                        }, 200);
+                })
         },[categoryid]);
 
        

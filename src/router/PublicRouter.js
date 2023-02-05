@@ -15,6 +15,8 @@
 
   import Cart from '../components/Cart/Cart'    
 
+  import CheckOut from '../components/CheckOut/checkOut';
+
   import Error404 from '../components/Error404/error404';
  
 
@@ -33,7 +35,8 @@
                             <Route  path='/'  element={<ItemListContainer greeting="Más vendidos en Rines de Autos y Camionetas" />} />
                             <Route  path='*' element={ <Error404/>} />
                             <Route  path='/category/:categoryid' element={<ItemListContainer greeting="Más vendidos en Rines de Autos y Camionetas" />} />
-
+                            <Route  path='/order' element={<CheckOut />} />
+                            
                 </Routes>
             </> 
 

@@ -14,6 +14,9 @@
   import FormLogin from '../components/User/Login/Form'; 
 
   import Error404 from '../components/Error404/error404';
+
+  import Registration from '../components/User/Registration/Form';
+
  
 
  const PrivateRouter = () =>
@@ -31,6 +34,7 @@
                 <Route  path='/'  element={<ItemListContainer greeting="Más vendidos en Rines de Autos y Camionetas" />} />
                 <Route  path='*' element={ <Error404/>} />
                 <Route  path='/category/:categoryid' element={<ItemListContainer greeting="Más vendidos en Rines de Autos y Camionetas" />} />
+                <Route  path='/registro' element={<Registration/>} />
         </Routes>
         </>
     );

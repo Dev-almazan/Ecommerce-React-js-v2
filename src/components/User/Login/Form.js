@@ -3,11 +3,17 @@ import Form from 'react-bootstrap/Form';
 import '../user.css';
 import { useState , useContext } from 'react';
 import { LoginContext } from '../../../context/loginContext';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Formulario = () =>
 {
 
+ 
+
     
+    const navigate = useNavigate();
+
     const {user,login}= useContext(LoginContext);
 
      console.log(user)
@@ -37,8 +43,13 @@ const Formulario = () =>
 
         login(data)
        
+     
     }
 
+    if(user.logged == true)
+    {
+        navigate("/cart");
+    }
     return(
 
                 <div className='card container formu'>
@@ -58,14 +69,19 @@ const Formulario = () =>
                             <Form.Group className="mb-3" >
                             <Form.Check type="checkbox" label="Recordarme" />
                             </Form.Group>
-                            <Button  to="/user/login"  variant="primary" type="submit">
+                            <Button   variant="primary" type="submit">
                             Continuar
                             </Button>
                         </Form>
                         { user.error && <> <h6 className="text-center text-danger">{user.error}</h6></> }
                         <hr></hr>
-                        <h6 className="text-center">¿Eres nuevo?</h6>
-                        <div className='btn btn-primary'>Crear Cuenta</div>
+                        { user.logged == false ? <> 
+                            <h6 className="text-center">¿Eres nuevo? <span className='text-primary'>Registrate para  poder continuar con tu compra y recibir promociones </span></h6>
+                            <Link to="/registro" className='btn btn-outline-primary'>Crear Cuenta</Link>
+                        </> :
+                        <> </>
+                        }
+                      
                 </div>
             
     )

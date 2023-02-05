@@ -5,24 +5,24 @@ import { BsArrow90DegLeft ,BsFillCartCheckFill} from "react-icons/bs";
 
 import './ItemDetailContainer.css';
 
-import Items from '../ItemListContainer/data.json';
+
 import { useParams ,useNavigate ,Link} from 'react-router-dom';
 import { useState , useEffect ,useContext } from 'react'; 
 
 import ItemCount from './ItemCount/ItemCount';
 import { CartContext } from "../../context/cartContext";
 
+//Importamos Firebase db
+import {collection, getDocs} from "firebase/firestore";
+import { db } from "../../firebase/config";
+
         const ItemDetailContainer = () =>
         {
 
-          
-             
             //valores globales de context para el cart section            
             const { cart,addCarrito,isInCart } = useContext(CartContext);
 
-
             const [cantidad, setCantidad] = useState(1);   
-            
 
             const idItem = useParams();
 
@@ -35,23 +35,23 @@ import { CartContext } from "../../context/cartContext";
                 navigate(-1)
             }
          
+            const Productos = collection(db,"productos");
 
-            const pedirData = () =>
-            {
-                            return new Promise( (res)=>
-                            {
-                                res(Items);            
-                                    
-                            })
-            };
 
             useEffect(() => {
-                pedirData()
-                        .then((result) => {
+                getDocs(Productos).then((result) => {
+
+                                      //Mapeamos obejto agregamos id y data
+                                        const datos =  result.docs.map((datos)=> {
+                                                return {
+                                                id : datos.id,
+                                                ...datos.data()
+                                                }
+                                        });
 
                                 if(idItem.id)
                                 {
-                                    setitems(result.filter(item  => item.id == idItem.id));
+                                    setitems(datos.filter(item  => item.id == idItem.id));
                                     
                                 }
                                         
