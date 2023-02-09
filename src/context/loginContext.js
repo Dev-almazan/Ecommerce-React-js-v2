@@ -33,32 +33,10 @@
        });
 
 
-       const [productos, setProductos] = useState([]);
-
-       
-
-      
-       
-
         const login = (data) =>{
 
 
-
-            const users = collection(db,"usuarios");
-
-            getDocs(users).then((result) => {
-
-                //Mapeamos objet agregamos id y data
-                const datos =  result.docs.map((datos)=> {
-                return {
-                        id : datos.id,
-                        ...datos.data()
-                }
-                });
-                        
-                setProductos(datos)
-               
-                    const validar = productos.filter(user=> user.email == productos.correo && user.password == productos.contraseña)
+                    const validar = usuarios.filter(user=> user.email == usuarios.email && user.password == usuarios.password)
 
                     console.log(validar)
 
@@ -83,10 +61,6 @@
                         
                     }     
                     
-
-                    }).catch((err) => {
-                            console.log(err);
-                    })
 
        
 
