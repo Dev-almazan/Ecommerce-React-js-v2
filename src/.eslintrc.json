@@ -15,6 +15,7 @@
         "quotes": "off",
         "semi": 0,
         "no-unused-vars": "off",
-        "eqeqeq": 0
+        "eqeqeq": 0,
+        "jsx-a11y/img-has-alt": "off"
     }
     }
