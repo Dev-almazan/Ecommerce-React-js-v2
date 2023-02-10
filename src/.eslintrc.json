@@ -11,6 +11,6 @@
             "LabeledStatement",
             "WithStatement"
        ],
-       "linebreak-style": 0
+       "linebreak-style": ["error", "windows"]
     }
 }
