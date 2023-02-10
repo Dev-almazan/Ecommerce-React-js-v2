@@ -12,10 +12,7 @@
             "error",
             "unix"
         ],
-        "quotes": [
-            "error",
-            "single"
-        ],
+        "quotes": "off",
         "semi": 0,
         "no-unused-vars": "off"
     }
