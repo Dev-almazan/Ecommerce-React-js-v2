@@ -1,17 +1,22 @@
 {
-    "parser": "@babel/eslint-parser",
-    "extends": "airbnb-base",
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
     "rules": {
-        "arrow-parens": [2, "as-needed"],
-        "curly": [2, "all"],
-        "no-param-reassign": 0,
-        "no-restricted-syntax": [
-            2,
-            "DebuggerStatement",
-            "LabeledStatement",
-            "WithStatement"
-       ],
-       "linebreak-style": ["error", "unix"],
-       "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 0, "maxEOF": 0 }]
+        "indent": "off",
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": 0,
+        "no-unused-vars": "off"
     }
-}
+    }
