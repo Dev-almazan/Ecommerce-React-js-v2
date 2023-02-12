@@ -20,7 +20,12 @@
         {
             email: 'pruebas@hotmail.com',
             password : 'Admin2023*'
+        },
+        {
+            email: 'prueba@gmail.com',
+            password : 'test09209*'
         }
+
     ]
 
     export const LoginProvider = ({children})=>
