@@ -8,25 +8,6 @@
     export const LoginContext = createContext();
 
 
-   
-
-
-    
-    const usuarios = [
-        {
-            email: 'ernest_almazan@outlook.com',
-            password : 'Dantes98*'
-        },
-        {
-            email: 'pruebas@hotmail.com',
-            password : 'Admin2023*'
-        },
-        {
-            email: 'prueba@gmail.com',
-            password : 'test09209*'
-        }
-
-    ]
 
     export const LoginProvider = ({children})=>
     {
@@ -41,42 +22,58 @@
         const login = (data) =>{
 
 
-                    const validar = usuarios.filter(user=> user.email == usuarios.email && user.password == usuarios.password)
+                 const users = collection(db,"usuarios");
 
-                    console.log(validar)
+                 getDocs(users).then((result) => {
+     
+                                //Mapeamos objet agregamos id y data
+                                const datos =  result.docs.map((datos)=> {
+                                return {
+                                        id : datos.id,
+                                        ...datos.data()
 
-                      
-                    if(validar.length > 0)
-                    {    
-                        setUser ({
-                            email : validar.correo,
-                            logged :true
-                        })
+                                        
+                                }
+                     
+                     });
+
+
+                     const validar = datos.filter(user=> user.correo == data.correo && user.contraseña == data.contraseña)
+
+                        if(validar.length > 0)
+                        {    
+                            setUser ({
+                                email : validar[0].correo,
+                                logged :true
+                            })
+                            
                         
-                    
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
+                        
+                            setUser ({
+                                email : '',
+                                logged :false,
+                                error : 'Usuario o contraseña incorrectos'
+                            })
+                            
+                        }    
+ 
+                      
+                    });
+
+                   
+       
+
+        }
+
+                const logout = () =>{
                     
                         setUser ({
                             email : '',
-                            logged :false,
-                            error : 'Usuario o contraseña incorrectos'
+                            logged :false
                         })
-                        
-                    }     
-                    
-
-       
-
-                 }
-
-        const logout = () =>{
-            
-                setUser ({
-                    email : '',
-                    logged :false
-                })
 
         }
 

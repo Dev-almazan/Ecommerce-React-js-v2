@@ -54,6 +54,7 @@ const Registration = () =>
                 if(result.id !== null)
                 {
                     navigate("/cart");
+                    alert("Usuario creado correctamnete.")
                 }
                 
 
