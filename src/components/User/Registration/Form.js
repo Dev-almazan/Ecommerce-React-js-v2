@@ -73,13 +73,13 @@ const Registration = () =>
                
                             <Form.Group className="mb-3" >
                             <Form.Label>Dirección de email</Form.Label>
-                            <Form.Control type="email" placeholder="Ingrese usuario de prueba: pruebas@hotmail.com" value={email}  onChange={handleEmail} />
+                            <Form.Control type="email" placeholder="Ingrese usuario:" value={email}  onChange={handleEmail} />
                           
                             </Form.Group>
                     
                             <Form.Group className="mb-3" >
                             <Form.Label>Contraseña</Form.Label>
-                            <Form.Control type="password" placeholder="Ingrese contraseña de prueba: Admin2023*" value={pass}  onChange={handlePass} />
+                            <Form.Control type="password" placeholder="Ingrese contraseña:" value={pass}  onChange={handlePass} />
                             </Form.Group>
                             <Button   variant="primary" type="submit">
                             Continuar
